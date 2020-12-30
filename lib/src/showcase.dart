@@ -72,16 +72,15 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
 
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (await widget.shouldOpenShowcase) {
+      if (await widget.shouldOpenShowcase && mounted) {
         _currentSlideIndex++;
         _currentSlideEntry = _createCurrentSlideEntry();
         Overlay.of(context).insert(_currentSlideEntry);
       }
     });
     WidgetsBinding.instance.addObserver(this);
-
-    super.initState();
   }
 
   @override

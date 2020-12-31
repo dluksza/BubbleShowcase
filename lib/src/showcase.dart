@@ -77,7 +77,10 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
       if (await widget.shouldOpenShowcase && mounted) {
         _currentSlideIndex++;
         _currentSlideEntry = _createCurrentSlideEntry();
-        Overlay.of(context).insert(_currentSlideEntry);
+        final overlay = Overlay.of(context);
+        if (_currentSlideEntry != null && overlay != null) {
+          overlay.insert(_currentSlideEntry);
+        }
       }
     });
     WidgetsBinding.instance.addObserver(this);
@@ -125,19 +128,31 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
       }
     } else {
       _currentSlideEntry = _createCurrentSlideEntry();
-      Overlay.of(context).insert(_currentSlideEntry);
+      final overlay = Overlay.of(context);
+      if (_currentSlideEntry != null && overlay != null) {
+        overlay.insert(_currentSlideEntry);
+      }
     }
   }
 
   /// Creates the current slide entry.
-  OverlayEntry _createCurrentSlideEntry() => OverlayEntry(
-        builder: (context) => widget.bubbleSlides[_currentSlideIndex].build(
-          context,
-          widget,
-          _currentSlideIndex,
-          (position) {
-            setState(() => _goToNextEntryOrClose(position));
-          },
-        ),
-      );
+  OverlayEntry _createCurrentSlideEntry() {
+    if (widget.bubbleSlides.length < _currentSlideIndex) {
+      return null;
+    }
+    final bubble = widget.bubbleSlides[_currentSlideIndex];
+    if (bubble == null) {
+      return null;
+    }
+    return OverlayEntry(
+      builder: (context) => bubble.build(
+        context,
+        widget,
+        _currentSlideIndex,
+        (position) {
+          setState(() => _goToNextEntryOrClose(position));
+        },
+      ),
+    );
+  }
 }

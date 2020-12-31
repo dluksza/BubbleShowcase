@@ -137,7 +137,8 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
 
   /// Creates the current slide entry.
   OverlayEntry _createCurrentSlideEntry() {
-    if (widget.bubbleSlides.length < _currentSlideIndex) {
+    if (_currentSlideIndex < 0 ||
+        widget.bubbleSlides.length <= _currentSlideIndex) {
       return null;
     }
     final bubble = widget.bubbleSlides[_currentSlideIndex];

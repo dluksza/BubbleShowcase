@@ -121,6 +121,9 @@ class RelativeBubbleSlide extends BubbleSlide {
       BubbleShowcase bubbleShowcase, int currentSlideIndex) {
     RenderBox renderBox =
         widgetKey.currentContext.findRenderObject() as RenderBox;
+    if (renderBox == null) {
+      return const Position(top: 0, right: 0, bottom: 0, left: 0);
+    }
     Offset offset = renderBox.localToGlobal(Offset.zero);
 
     return Position(

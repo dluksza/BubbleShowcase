@@ -119,6 +119,10 @@ class RelativeBubbleSlide extends BubbleSlide {
   @override
   Position getHighlightPosition(BuildContext context,
       BubbleShowcase bubbleShowcase, int currentSlideIndex) {
+    if (widgetKey.currentContext == null) {
+      return const Position(top: 0, right: 0, bottom: 0, left: 0);
+    }
+
     RenderBox renderBox =
         widgetKey.currentContext.findRenderObject() as RenderBox;
     if (renderBox == null) {

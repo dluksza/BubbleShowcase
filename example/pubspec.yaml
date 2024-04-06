@@ -10,7 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bubble_showcase: any
+  bubble_showcase:
+    path: ../
 dev_dependencies:
   flutter_test:
     sdk: flutter

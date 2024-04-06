@@ -18,7 +18,7 @@ packages:
     source: hosted
     version: "2.1.1"
   bubble_showcase:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: ".."
       relative: true

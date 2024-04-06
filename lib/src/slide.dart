@@ -1,7 +1,6 @@
 import 'package:bubble_showcase/src/shape.dart';
 import 'package:bubble_showcase/src/showcase.dart';
 import 'package:bubble_showcase/src/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// A function that allows to calculate a position according to a provided size.
@@ -118,7 +117,7 @@ abstract class BubbleSlide {
                 .replaceAll(':n', slidesCount.toString()),
             style: Theme.of(context)
                 .textTheme
-                .bodyText2!
+                .bodyMedium!
                 .copyWith(color: writeColor),
             textAlign: TextAlign.center,
           ),

@@ -76,7 +76,7 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
 
   @override
   void initState() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (await widget.shouldOpenShowcase) {
         await Future.delayed(widget.initialDelay);
         if (mounted) {
@@ -84,7 +84,7 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
         }
       }
     });
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     super.initState();
   }
@@ -99,16 +99,16 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
   @override
   void dispose() {
     currentSlideEntry?.remove();
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
   void didChangeMetrics() {
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       if (currentSlideEntry != null) {
         currentSlideEntry!.remove();
-        Overlay.of(context)?.insert(currentSlideEntry!);
+        Overlay.of(context).insert(currentSlideEntry!);
       }
     });
   }
@@ -141,7 +141,7 @@ class _BubbleShowcaseState extends State<BubbleShowcase>
       }
     } else {
       currentSlideEntry = createCurrentSlideEntry();
-      Overlay.of(context)?.insert(currentSlideEntry!);
+      Overlay.of(context).insert(currentSlideEntry!);
       triggerOnEnter();
     }
   }

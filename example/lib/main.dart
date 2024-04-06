@@ -33,7 +33,7 @@ class _BubbleShowcaseDemoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
+    TextStyle textStyle = Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: Colors.white,
         );
     return BubbleShowcase(
@@ -220,7 +220,7 @@ class _BubbleShowcaseDemoChild extends StatelessWidget {
               child: Text(
                 'Bubble Showcase',
                 key: _titleKey,
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
             ),

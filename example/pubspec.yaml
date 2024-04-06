@@ -10,11 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  bubble_showcase: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bubble_showcase:
-    path: ../
   speech_bubble: ^0.0.7
 
 flutter:
